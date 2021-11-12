@@ -1,0 +1,20 @@
+mat-toolbar {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 1000;
+  background: #f2ccc9;
+}
+
+.logo-title mat-icon,
+span {
+  color: #473c3b;
+}
+
+.logo-title span {
+  font-size: large;
+}
+
+.space {
+  flex: 1 1 auto;
+}

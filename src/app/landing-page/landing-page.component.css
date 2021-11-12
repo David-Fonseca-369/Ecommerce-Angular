@@ -1,0 +1,31 @@
+.carousel {
+  max-width: 60rem;
+  margin-right: auto;
+  margin-left: auto;
+  z-index: 1;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+}
+.search mat-form-field {
+  width: 50rem;
+}
+
+.products {
+  margin: 3rem 0;
+}
+.products p {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.paginator {
+  display: flex;
+
+  justify-content: center;
+}
+mat-paginator {
+  background: #f7f7f7;
+}

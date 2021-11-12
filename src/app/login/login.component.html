@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="content">
+    <div class="login-container">
+      <div class="logo">
+        <div>
+          <mat-icon
+            style="
+              font-size: 6rem;
+              color: #473c3b;
+              margin: 0 auto;
+              margin-left: -4rem;
+            "
+            >shopping_bag</mat-icon
+          >
+        </div>
+      </div>
+
+      <h1 class="title">Login</h1>
+      <div class="inputs">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input formControlName="user" matInput />
+          <mat-error>El Email es requerido.</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="inputs">
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            formControlName="password"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          <mat-error>El campo Contraseña es requerido.</mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- <app-show-errors [errors]="errors"></app-show-errors> -->
+
+      <div class="button-login">
+        <button mat-flat-button>Iniciar Sesión</button>
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="">Política</a>
+      <a href="">Acerca De</a>
+    </div>
+  </div>
+</div>

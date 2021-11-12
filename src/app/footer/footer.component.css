@@ -1,0 +1,52 @@
+.footer {
+  padding: 50px 0 50px 0;
+  background: #dcdcdc;
+}
+
+.sections {
+  display: flex;
+  justify-content: center;
+}
+
+.section {
+  margin: 0 5%;
+}
+
+.section li {
+  list-style-type: none;
+  margin-bottom: 0.5rem;
+}
+
+.section h4 {
+  margin-bottom: 1rem;
+}
+
+.section a {
+  text-decoration: none;
+  color: #767979;
+}
+
+.section span {
+  padding-bottom: 1rem;
+}
+
+.section img {
+  width: 1rem;
+  margin-right: 0.5rem;
+}
+
+.line {
+  display: flex;
+  justify-content: center;
+}
+
+.line hr {
+  margin-top: 1rem;
+  width: 80%;
+}
+
+.copy {
+  margin-top: 1rem;
+  text-align: center;
+  color: #767979;
+}

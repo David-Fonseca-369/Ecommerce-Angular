@@ -1,0 +1,56 @@
+<div>
+  <div class="search">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Buscar</mat-label>
+        <input
+          type="text"
+          placeholder="Buscar..."
+          aria-label="Number"
+          matInput
+          [formControl]="myControl"
+          [matAutocomplete]="auto"
+        />
+        <mat-icon matSuffix>search</mat-icon>
+
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option"
+          >
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="carousel">
+    <carousel
+      [images]="imagesForSlider"
+      [autoplay]="true"
+      [autoplayInterval]="2000"
+      [loop]="true"
+      [cellsToShow]="1"
+      [dots]="true"
+      [height]="350"
+      [borderRadius]="15"
+    >
+    </carousel>
+  </div>
+  <div class="products">
+    <p>Mis Productos</p>
+    <app-product-listing [products]="productList"></app-product-listing>
+  </div>
+  <div class="paginator">
+    <div>
+      <mat-paginator
+        [length]="100"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</div>

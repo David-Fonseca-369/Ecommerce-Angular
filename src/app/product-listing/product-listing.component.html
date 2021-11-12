@@ -1,0 +1,36 @@
+<div class="products">
+  <div class="container">
+    <div class="card" *ngFor="let product of products; let index = index">
+      <div class="imgBx">
+        <img [src]="product.image" alt="Producto" />
+        <ul class="action">
+          <li>
+            <mat-icon>favorite_border</mat-icon>
+            <span>Agregar a Favoritos</span>
+          </li>
+          <li>
+            <mat-icon>add_shopping_cart</mat-icon>
+            <span>Agregar al Carrito</span>
+          </li>
+          <li>
+            <mat-icon>description</mat-icon>
+            <span>Ver Detalles</span>
+          </li>
+        </ul>
+      </div>
+      <div class="content">
+        <div class="productName">
+          <a href="#" style="text-decoration: none; color: black">{{
+            product.name
+          }}</a>
+        </div>
+        <div class="price_rating">
+          <h2>{{ product.price | currency }}</h2>
+          <div class="rating">
+            <p style="color: #525252">{{ product.sales }} vendidos</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
