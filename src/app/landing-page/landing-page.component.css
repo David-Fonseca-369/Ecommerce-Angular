@@ -26,6 +26,21 @@
 
   justify-content: center;
 }
+
 mat-paginator {
   background: #f7f7f7;
+}
+
+@media screen and (max-width: 600px) {
+  .search mat-form-field {
+    width: 90%;
+  }
+
+  .paginator {
+    background-color: red;
+  }
+
+  .products p {
+    font-size: medium;
+  }
 }

@@ -3,34 +3,22 @@
     <div class="login-container">
       <div class="logo">
         <div>
-          <mat-icon
-            style="
-              font-size: 6rem;
-              color: #473c3b;
-              margin: 0 auto;
-              margin-left: -4rem;
-            "
-            >shopping_bag</mat-icon
-          >
+          <mat-icon class="icon">shopping_bag</mat-icon>
         </div>
       </div>
 
-      <h1 class="title">Login</h1>
+      <h1 class="title">Iniciar Sesión</h1>
       <div class="inputs">
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
-          <input formControlName="user" matInput />
+          <input matInput />
           <mat-error>El Email es requerido.</mat-error>
         </mat-form-field>
       </div>
       <div class="inputs">
         <mat-form-field appearance="outline">
           <mat-label>Password</mat-label>
-          <input
-            matInput
-            [type]="hide ? 'password' : 'text'"
-            formControlName="password"
-          />
+          <input matInput [type]="hide ? 'password' : 'text'" />
           <button
             mat-icon-button
             matSuffix

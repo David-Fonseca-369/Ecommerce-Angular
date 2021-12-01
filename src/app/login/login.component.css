@@ -52,6 +52,13 @@ mat-form-field {
   border-radius: 15px;
 }
 
+.icon {
+  font-size: 6rem;
+  color: #473c3b;
+  margin: 0 auto;
+  margin-left: -4rem;
+}
+
 .logo {
   text-align: center;
   margin-top: 3rem;
@@ -71,4 +78,24 @@ mat-form-field {
   text-decoration-line: none;
   color: #7d7d7d;
   margin-left: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+  .login-container {
+    width: 18rem;
+    margin: 0;
+  }
+
+  .button-login button {
+    width: 80%;
+    font-size: small;
+  }
+
+  .icon {
+    font-size: 5rem;
+  }
+
+  .title {
+    font-size: large;
+  }
 }
