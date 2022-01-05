@@ -1,0 +1,13 @@
+.tabla-categorias {
+  margin-top: 3rem;
+}
+
+.tabla-categorias,
+mat-paginator {
+  width: 40%;
+}
+
+button {
+  background-color: #473c3b;
+  color: white;
+}

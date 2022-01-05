@@ -1,0 +1,33 @@
+<app-mostrar-errores [errores]="errores"></app-mostrar-errores>
+
+<form (submit)="guardar()" [formGroup]="form">
+  <div class="formulario">
+    <div class="campos">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre*</mat-label>
+        <input
+          formControlName="nombre"
+          placeholder="Nombre de la categoría"
+          matInput
+        />
+        <mat-icon matSuffix>category</mat-icon>
+        <mat-error>Debe agregar un nombre.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Descripción</mat-label>
+        <textarea
+          formControlName="descripcion"
+          placeholder="Descripción"
+          matInput
+        ></textarea>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button mat-flat-button [disabled]="form.invalid">Guardar</button>
+
+      <a mat-stroked-button routerLink="/categorias">Cancelar</a>
+    </div>
+  </div>
+</form>

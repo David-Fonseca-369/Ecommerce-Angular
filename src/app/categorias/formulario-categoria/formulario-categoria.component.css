@@ -1,0 +1,13 @@
+mat-form-field {
+  width: 30%;
+}
+.campos {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  margin-right: 1rem;
+  background-color: #473c3b;
+  color: white;
+}

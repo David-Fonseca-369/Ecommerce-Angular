@@ -9,6 +9,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //Binding de doble vía 'FormsModule'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+//Http client
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+//Sweet alert 2
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 //Importo MaterialModule
 import { MaterialModule } from './material/material.module';
 import { MenuComponent } from './menu/menu.component';
@@ -19,6 +25,13 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { ProductListingComponent } from './product-listing/product-listing.component';
 import { FooterComponent } from './footer/footer.component';
+import { ProductDetailsComponent } from './product/product-details/product-details.component';
+import { IndiceCategoriasComponent } from './categorias/indice-categorias/indice-categorias.component';
+import { FormularioCategoriaComponent } from './categorias/formulario-categoria/formulario-categoria.component';
+import { MostrarErroresComponent } from './helpers/mostrar-errores/mostrar-errores.component';
+import { SpinnerComponent } from './helpers/spinner/spinner.component';
+import { CrearCategoriaComponent } from './categorias/crear-categoria/crear-categoria.component';
+import { EditarCategoriaComponent } from './categorias/editar-categoria/editar-categoria.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +41,13 @@ import { FooterComponent } from './footer/footer.component';
     LandingPageComponent,
     ProductListingComponent,
     FooterComponent,
+    ProductDetailsComponent,
+    IndiceCategoriasComponent,
+    FormularioCategoriaComponent,
+    MostrarErroresComponent,
+    SpinnerComponent,
+    CrearCategoriaComponent,
+    EditarCategoriaComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +57,8 @@ import { FooterComponent } from './footer/footer.component';
     IvyCarouselModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
+    SweetAlert2Module,
   ],
   providers: [],
   bootstrap: [AppComponent],

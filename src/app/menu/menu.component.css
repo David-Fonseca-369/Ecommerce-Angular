@@ -19,6 +19,10 @@ span {
   flex: 1 1 auto;
 }
 
+.opciones-administrador {
+  display: flex;
+}
+
 @media screen and (max-width: 600px) {
   .logo-title span {
     display: none;
