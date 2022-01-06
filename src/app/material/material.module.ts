@@ -16,6 +16,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTabsModule } from '@angular/material/tabs';
 
 //Para tabla son 2
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -38,6 +39,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatNativeDateModule,
     MatProgressSpinnerModule,
     MatTooltipModule,
+    MatTabsModule,
   ],
   imports: [CommonModule],
 })

@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { productDTO } from '../models/product';
-import { productoCreacionDTO } from './producto';
+import { productoCreacionDTO, productoDTO } from './producto';
 
 @Injectable({
   providedIn: 'root',
@@ -20,10 +20,17 @@ export class ProductosService {
       cantidadRegistrosAMostrar.toString()
     );
 
-    return this.http.get<productDTO[]>(this.apiURL + '/todosPaginacion', {
+    return this.http.get<productoDTO[]>(this.apiURL + '/todosPaginacion', {
       observe: 'response',
       params,
     });
+  }
+
+  public desactivar(id: number) {
+    return this.http.put(`${this.apiURL}/desactivar/${id}`, null);
+  }
+  public activar(id: number) {
+    return this.http.put(`${this.apiURL}/activar/${id}`, null);
   }
 
   public crear(producto: productoCreacionDTO) {
@@ -44,13 +51,12 @@ export class ProductosService {
     if (producto.descripcion) {
       formData.append('descripcion', producto.descripcion);
     }
-
+    //
     if (producto.imagenes) {
       producto.imagenes.forEach((element) => {
         formData.append('imagenes', element);
       });
     }
-
-    return formDat;
+    return formData;
   }
 }

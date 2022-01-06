@@ -15,6 +15,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 //Sweet alert 2
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
+//Dropzone
+import { NgxDropzoneModule } from 'ngx-dropzone';
+
+//Markdown
+import { MarkdownModule } from 'ngx-markdown';
+
 //Importo MaterialModule
 import { MaterialModule } from './material/material.module';
 import { MenuComponent } from './menu/menu.component';
@@ -23,6 +29,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 
 //Carousel
 import { IvyCarouselModule } from 'angular-responsive-carousel';
+
 import { ProductListingComponent } from './product-listing/product-listing.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
@@ -32,6 +39,9 @@ import { MostrarErroresComponent } from './helpers/mostrar-errores/mostrar-error
 import { SpinnerComponent } from './helpers/spinner/spinner.component';
 import { CrearCategoriaComponent } from './categorias/crear-categoria/crear-categoria.component';
 import { EditarCategoriaComponent } from './categorias/editar-categoria/editar-categoria.component';
+import { IndiceProductosComponent } from './productos/indice-productos/indice-productos.component';
+import { CrearProductoComponent } from './productos/crear-producto/crear-producto.component';
+import { InputMarkdownComponent } from './helpers/input-markdown/input-markdown.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +58,9 @@ import { EditarCategoriaComponent } from './categorias/editar-categoria/editar-c
     SpinnerComponent,
     CrearCategoriaComponent,
     EditarCategoriaComponent,
+    IndiceProductosComponent,
+    CrearProductoComponent,
+    InputMarkdownComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +72,8 @@ import { EditarCategoriaComponent } from './categorias/editar-categoria/editar-c
     FormsModule,
     HttpClientModule,
     SweetAlert2Module,
+    NgxDropzoneModule,
+    MarkdownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

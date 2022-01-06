@@ -6,12 +6,17 @@ import { IndiceCategoriasComponent } from './categorias/indice-categorias/indice
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
+import { CrearProductoComponent } from './productos/crear-producto/crear-producto.component';
+import { IndiceProductosComponent } from './productos/indice-productos/indice-productos.component';
 
 const routes: Routes = [
   //Administrador
   { path: 'categorias', component: IndiceCategoriasComponent },
   { path: 'categorias/crear', component: CrearCategoriaComponent },
   { path: 'categorias/editar/:id', component: EditarCategoriaComponent },
+
+  { path: 'productos', component: IndiceProductosComponent },
+  { path: 'productos/crear', component: CrearProductoComponent },
   //
 
   { path: '', component: LandingPageComponent },

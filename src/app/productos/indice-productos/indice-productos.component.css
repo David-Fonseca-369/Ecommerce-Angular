@@ -1,0 +1,13 @@
+.tabla-productos {
+  margin-top: 3rem;
+}
+
+.tabla-productos,
+mat-paginator {
+  width: 80%;
+}
+
+button {
+  background-color: #473c3b;
+  color: white;
+}

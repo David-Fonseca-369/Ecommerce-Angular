@@ -1,0 +1,116 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
+<h1 class="title">Nuevo Producto</h1>
+
+<div style="display: flex; justify-content: center">
+  <div class="contenedor">
+    <form [formGroup]="form">
+      <div class="campos-primero">
+        <mat-form-field appearance="outline" class="nombre">
+          <mat-label>Nombre del Producto*</mat-label>
+          <input
+            placeholder="Nombre del producto"
+            matInput
+            formControlName="nombre"
+          />
+          <mat-icon matSuffix>category</mat-icon>
+          <mat-error>Debe agregar un nombre.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="codigo">
+          <mat-label>Código*</mat-label>
+          <input
+            placeholder="Código del producto"
+            matInput
+            formControlName="codigo"
+          />
+          <mat-icon matSuffix>numbers</mat-icon>
+          <mat-error>Debe agregar un código.</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="campos">
+        <mat-form-field appearance="outline" floatLabel="always">
+          <mat-label>Precio*</mat-label>
+          <input
+            placeholder="0"
+            matInput
+            type="number"
+            class="example-right-align"
+            formControlName="precioVenta"
+          />
+          <span matPrefix>$&nbsp;</span>
+          <mat-error>Debe agregar un precio.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Categoría*</mat-label>
+          <mat-select formControlName="idCategoria">
+            <mat-option
+              *ngFor="let categoria of categorias"
+              [value]="categoria.idCategoria"
+            >
+              {{ categoria.nombre }}
+            </mat-option>
+          </mat-select>
+          <mat-error>Debe seleccionar una categoría.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Stock*</mat-label>
+          <input
+            placeholder="Stock del producto"
+            matInput
+            type="number"
+            formControlName="stock"
+          />
+          <mat-icon matSuffix>inventory</mat-icon>
+          <mat-error>Debe agregar una cantidad.</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <app-input-markdown
+          (changeMarkdown)="cambioMarkdown($event)"
+        ></app-input-markdown>
+      </div>
+      <div
+        class="custom-dropzone"
+        ngx-dropzone
+        [accept]="'image/*'"
+        (change)="onSelect($event)"
+        [multiple]="false"
+      >
+        <ngx-dropzone-label>
+          <div>
+            Arrastra las imágenes aquí o clic para abrir el exporador de
+            archivos.
+          </div>
+        </ngx-dropzone-label>
+        <!-- <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let i of images" [file]="i" [removable]="true" (removed)="onRemoveImage(i)" > -->
+        <ngx-dropzone-image-preview
+          ngProjectAs="ngx-dropzone-preview"
+          *ngFor="let i of files"
+          [file]="i"
+          [removable]="true"
+          (removed)="onRemove(i)"
+        >
+          <ngx-dropzone-label>{{ i.name }} ({{ i.type }})</ngx-dropzone-label>
+        </ngx-dropzone-image-preview>
+      </div>
+
+      <div>
+        <button
+          mat-flat-button
+          (click)="crearProducto()"
+          [disabled]="form.invalid || files.length <= 0"
+        >
+          Guardar
+        </button>
+
+        <a mat-stroked-button routerLink="/productos">Cancelar</a>
+      </div>
+
+      <app-mostrar-errores [errores]="errores"></app-mostrar-errores>
+    </form>
+  </div>
+</div>
