@@ -7,6 +7,9 @@ mat-paginator {
   width: 80%;
 }
 
+.tabla-productos img {
+  width: 3rem;
+}
 button {
   background-color: #473c3b;
   color: white;

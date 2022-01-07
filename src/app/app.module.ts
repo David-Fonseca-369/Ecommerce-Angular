@@ -30,7 +30,6 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 //Carousel
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 
-import { ProductListingComponent } from './product-listing/product-listing.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
 import { IndiceCategoriasComponent } from './categorias/indice-categorias/indice-categorias.component';
@@ -42,6 +41,11 @@ import { EditarCategoriaComponent } from './categorias/editar-categoria/editar-c
 import { IndiceProductosComponent } from './productos/indice-productos/indice-productos.component';
 import { CrearProductoComponent } from './productos/crear-producto/crear-producto.component';
 import { InputMarkdownComponent } from './helpers/input-markdown/input-markdown.component';
+import { ListadoProductosComponent } from './productos/listado-productos/listado-productos.component';
+import { InputImgComponent } from './helpers/input-img/input-img.component';
+import { DescripcionProductoComponent } from './productos/descripcion-producto/descripcion-producto.component';
+import { ResumenCompraComponent } from './productos/resumen-compra/resumen-compra.component';
+import { PagarComponent } from './productos/pagar/pagar.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +53,6 @@ import { InputMarkdownComponent } from './helpers/input-markdown/input-markdown.
     MenuComponent,
     LoginComponent,
     LandingPageComponent,
-    ProductListingComponent,
     FooterComponent,
     ProductDetailsComponent,
     IndiceCategoriasComponent,
@@ -61,6 +64,11 @@ import { InputMarkdownComponent } from './helpers/input-markdown/input-markdown.
     IndiceProductosComponent,
     CrearProductoComponent,
     InputMarkdownComponent,
+    ListadoProductosComponent,
+    InputImgComponent,
+    DescripcionProductoComponent,
+    ResumenCompraComponent,
+    PagarComponent,
   ],
   imports: [
     BrowserModule,

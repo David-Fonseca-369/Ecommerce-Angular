@@ -67,6 +67,9 @@
           <mat-error>Debe agregar una cantidad.</mat-error>
         </mat-form-field>
       </div>
+      <app-input-img
+        (archivoSeleccionado)="archivoSeleccionado($event)"
+      ></app-input-img>
 
       <div>
         <app-input-markdown
@@ -102,7 +105,7 @@
         <button
           mat-flat-button
           (click)="crearProducto()"
-          [disabled]="form.invalid || files.length <= 0"
+          [disabled]="form.invalid"
         >
           Guardar
         </button>

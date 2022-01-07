@@ -7,7 +7,10 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
 import { CrearProductoComponent } from './productos/crear-producto/crear-producto.component';
+import { DescripcionProductoComponent } from './productos/descripcion-producto/descripcion-producto.component';
 import { IndiceProductosComponent } from './productos/indice-productos/indice-productos.component';
+import { PagarComponent } from './productos/pagar/pagar.component';
+import { ResumenCompraComponent } from './productos/resumen-compra/resumen-compra.component';
 
 const routes: Routes = [
   //Administrador
@@ -17,6 +20,19 @@ const routes: Routes = [
 
   { path: 'productos', component: IndiceProductosComponent },
   { path: 'productos/crear', component: CrearProductoComponent },
+  {
+    path: 'productos/descripcion/:id',
+    component: DescripcionProductoComponent,
+  },
+  {
+    path: 'productos/resumen-compra',
+    component: ResumenCompraComponent,
+  },
+  {
+    path: 'productos/pagar',
+    component: PagarComponent,
+  },
+
   //
 
   { path: '', component: LandingPageComponent },

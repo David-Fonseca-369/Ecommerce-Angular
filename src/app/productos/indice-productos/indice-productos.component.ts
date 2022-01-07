@@ -18,6 +18,7 @@ export class IndiceProductosComponent implements OnInit {
 
   columnasAMostrar = [
     'opciones',
+    'portada',
     'nombre',
     'categoria',
     'codigo',

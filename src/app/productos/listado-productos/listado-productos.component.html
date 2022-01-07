@@ -1,0 +1,39 @@
+<div class="contenedor">
+  <div class="row">
+    <div class="column" *ngFor="let producto of productos">
+      <a routerLink="/productos/descripcion//{{ producto.idProducto }}">
+        <div class="card">
+          <div class="portada">
+            <img [src]="producto.portada" alt="Imagen Producto" />
+          </div>
+
+          <hr />
+          <p
+            style="
+              text-align: start;
+              margin: 1rem 0;
+              font-size: large;
+              color: black;
+            "
+          >
+            {{ producto.nombre }}
+          </p>
+          <div style="display: flex; justify-content: space-between">
+            <p style="color: red">{{ producto.precioVenta | currency }}</p>
+            <p style="color: gray">{{ producto.vendidos }} vendidos</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="paginator">
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 15, 20, 50]"
+      showFirstLastButtons
+      [length]="cantidadTotalRegistros"
+      [pageSize]="cantidadRegistrosAMostrar"
+      (page)="actualizarPaginacion($event)"
+    >
+    </mat-paginator>
+  </div>
+</div>

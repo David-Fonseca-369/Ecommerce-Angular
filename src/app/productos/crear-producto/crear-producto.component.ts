@@ -3,7 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { categoriaDTO } from 'src/app/categorias/categoria';
 import { CategoriasService } from 'src/app/categorias/categorias.service';
-import { MensajeExistoso, parsearErroresAPI } from 'src/app/helpers/helpers';
+import {
+  MensajeExistoso,
+  parsearErroresAPI,
+  toBase64,
+} from 'src/app/helpers/helpers';
 import { ProductosService } from '../productos.service';
 
 @Component({
@@ -53,6 +57,7 @@ export class CrearProductoComponent implements OnInit {
       precioVenta: ['', { validators: [Validators.required] }],
       stock: ['', { validators: [Validators.required] }],
       descripcion: '',
+      portada: ['', { validators: [Validators.required] }],
       imagenes: [],
     });
   }
@@ -82,5 +87,10 @@ export class CrearProductoComponent implements OnInit {
     if (this.files.length > 0) {
       this.form.get('imagenes').setValue(this.files);
     }
+  }
+
+  archivoSeleccionado(file) {
+    //Agrego valor al campo foto
+    this.form.get('portada').setValue(file);
   }
 }

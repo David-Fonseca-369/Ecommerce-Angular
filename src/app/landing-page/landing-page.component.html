@@ -40,15 +40,6 @@
   </div>
   <div class="products">
     <p>Mis Productos</p>
-    <app-product-listing [products]="productList"></app-product-listing>
-  </div>
-  <div class="paginator">
-    <mat-paginator
-      [length]="100"
-      [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 25, 100]"
-      aria-label="Select page"
-    >
-    </mat-paginator>
+    <app-listado-productos></app-listado-productos>
   </div>
 </div>

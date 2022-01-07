@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { productDTO } from '../models/product';
-import { productoCreacionDTO, productoDTO } from './producto';
+import { productoCardDTO, productoCreacionDTO, productoDTO } from './producto';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +21,20 @@ export class ProductosService {
     );
 
     return this.http.get<productoDTO[]>(this.apiURL + '/todosPaginacion', {
+      observe: 'response',
+      params,
+    });
+  }
+
+  public cardsPaginacion(pagina: number, cantidadRegistrosAMostrar: number) {
+    let params = new HttpParams();
+    params = params.append('pagina', pagina.toString());
+    params = params.append(
+      'recordsPorPagina',
+      cantidadRegistrosAMostrar.toString()
+    );
+
+    return this.http.get<productoCardDTO[]>(this.apiURL + '/cardsPaginacion', {
       observe: 'response',
       params,
     });
@@ -51,6 +65,8 @@ export class ProductosService {
     if (producto.descripcion) {
       formData.append('descripcion', producto.descripcion);
     }
+
+    formData.append('portada', producto.portada);
     //
     if (producto.imagenes) {
       producto.imagenes.forEach((element) => {

@@ -5,6 +5,7 @@ export interface productoCreacionDTO {
   precioVenta: number;
   stock: number;
   descripcion: string;
+  portada: File;
   imagenes: File[];
 }
 
@@ -17,5 +18,14 @@ export interface productoDTO {
   precioVenta: number;
   stock: number;
   vendidos: number;
+  portada: string;
   estado: boolean;
+}
+
+export interface productoCardDTO {
+  idProducto: number;
+  nombre: string;
+  precioVenta: number;
+  vendidos: number;
+  portada: string;
 }
