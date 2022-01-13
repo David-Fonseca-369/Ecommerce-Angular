@@ -1,47 +1,57 @@
 <div class="container">
   <div class="content">
-    <div class="login-container">
-      <div class="logo">
-        <div>
-          <mat-icon class="icon">shopping_bag</mat-icon>
+    <form [formGroup]="form">
+      <div class="login-container">
+        <div class="logo">
+          <div>
+            <mat-icon class="icon">shopping_bag</mat-icon>
+          </div>
+        </div>
+
+        <h1 class="title">Iniciar Sesión</h1>
+        <div class="inputs">
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="correo" />
+            <mat-error>{{ obtenerMensajeErrorCorreo() }}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="inputs">
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              [type]="hide ? 'password' : 'text'"
+              formControlName="password"
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+            <mat-error>El campo Contraseña es requerido.</mat-error>
+          </mat-form-field>
+        </div>
+        <div style="display: flex; justify-content: center">
+          <div style="width: 60%; text-align: start">
+            <app-mostrar-errores [errores]="errores"></app-mostrar-errores>
+          </div>
+        </div>
+
+        <div class="button-login">
+          <button mat-flat-button (click)="login()" [disabled]="form.invalid">
+            Iniciar Sesión
+          </button>
         </div>
       </div>
-
-      <h1 class="title">Iniciar Sesión</h1>
-      <div class="inputs">
-        <mat-form-field appearance="outline">
-          <mat-label>Email</mat-label>
-          <input matInput />
-          <mat-error>El Email es requerido.</mat-error>
-        </mat-form-field>
-      </div>
-      <div class="inputs">
-        <mat-form-field appearance="outline">
-          <mat-label>Password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" />
-          <button
-            mat-icon-button
-            matSuffix
-            (click)="hide = !hide"
-            [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide"
-          >
-            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-          </button>
-          <mat-error>El campo Contraseña es requerido.</mat-error>
-        </mat-form-field>
-      </div>
-
-      <!-- <app-show-errors [errors]="errors"></app-show-errors> -->
-
-      <div class="button-login">
-        <button mat-flat-button>Iniciar Sesión</button>
-      </div>
-    </div>
+    </form>
 
     <div class="links">
-      <a href="">Política</a>
-      <a href="">Acerca De</a>
+      <a href="">¿Olvidó su contraseña?</a>
     </div>
   </div>
 </div>

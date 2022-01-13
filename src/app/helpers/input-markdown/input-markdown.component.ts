@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-input-markdown',
@@ -8,6 +8,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class InputMarkdownComponent implements OnInit {
   constructor() {}
 
+  @Input()
   contenidoMarkdown = '';
   //Lo emitimos al componente padre
   @Output()

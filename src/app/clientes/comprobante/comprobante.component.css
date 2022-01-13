@@ -1,0 +1,27 @@
+.tabla-compra {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.tabla-compra table {
+  width: 80%;
+  margin: 3rem auto;
+}
+
+.tabla-compra table th {
+  background: #443a39;
+  color: white;
+  font-weight: 500;
+}
+
+.tabla-compra table,
+th,
+td {
+  border: 1px solid #b6b6b6;
+  border-collapse: collapse;
+}
+
+.comprobante {
+  width: 800px;
+}

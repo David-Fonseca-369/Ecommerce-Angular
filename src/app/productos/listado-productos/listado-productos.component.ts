@@ -1,5 +1,6 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
 import { parsearErroresAPI } from 'src/app/helpers/helpers';
 import { productDTO } from 'src/app/models/product';
@@ -20,13 +21,41 @@ export class ListadoProductosComponent implements OnInit {
   isLoading = false;
   errores: string[] = [];
 
-  constructor(private productosService: ProductosService) {}
+  form: FormGroup;
+
+  formularioOriginal = {
+    nombre: '',
+  };
+
+  @Input()
+  busqueda: string;
+
+  imagesForSlider = [
+    {
+      path: './assets/images/maqu.jpg',
+    },
+    {
+      path: './assets/images/maqui.jpg',
+    },
+    {
+      path: './assets/images/maquillaje.png',
+    },
+  ];
+
+  constructor(
+    private productosService: ProductosService,
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.cargarRegistrosPaginacion(
       this.paginaActual,
       this.cantidadRegistrosAMostrar
     );
+
+    this.form.valueChanges.subscribe((valores) => {
+      this.buscarProductos(valores);
+    });
   }
 
   cargarRegistrosPaginacion(pagina: number, cantidadElementosAMostrar) {
@@ -58,5 +87,18 @@ export class ListadoProductosComponent implements OnInit {
       this.paginaActual,
       this.cantidadRegistrosAMostrar
     );
+  }
+
+  buscarProductos(valores: any) {
+    this.isLoading = true;
+    valores.pagina = this.paginaActual;
+    valores.recordsPorPagina = this.cantidadRegistrosAMostrar;
+
+    this.productosService.filtrarCards(valores).subscribe((response) => {
+      this.cantidadTotalRegistros = response.headers.get(
+        'cantidadTotalRegistros'
+      );
+      this.isLoading = false;
+    });
   }
 }

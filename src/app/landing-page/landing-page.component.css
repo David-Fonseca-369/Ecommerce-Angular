@@ -16,9 +16,71 @@
 .products {
   margin: 3rem 0;
 }
-.products p {
+/* .products p {
   text-align: center;
   font-size: 2rem;
+} */
+
+.paginator {
+  display: flex;
+
+  justify-content: center;
+}
+
+mat-paginator {
+  background: #f7f7f7;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {
+  margin: 2rem -5px;
+  width: 1200px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 12px;
+  text-align: center;
+  background-color: #ffffff;
+  height: 22rem;
+  width: 16rem;
+  margin-top: 3rem;
+}
+
+.card .portada {
+  width: 3rem;
+  margin-bottom: 1rem;
+  margin: 0 auto;
+}
+
+.card .portada img {
+  max-width: 10rem;
+  height: 12rem;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .paginator {
@@ -29,6 +91,11 @@
 
 mat-paginator {
   background: #f7f7f7;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }
 
 @media screen and (max-width: 600px) {
@@ -42,5 +109,11 @@ mat-paginator {
 
   .products p {
     font-size: medium;
+  }
+
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
   }
 }

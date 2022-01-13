@@ -1,0 +1,13 @@
+.tabla-usuarios,
+mat-paginator {
+  width: 60%;
+}
+
+button {
+  background-color: #473c3b;
+  color: white;
+}
+
+.tabla-usuarios {
+  margin-top: 3rem;
+}

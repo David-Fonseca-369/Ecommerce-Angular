@@ -46,6 +46,18 @@ import { InputImgComponent } from './helpers/input-img/input-img.component';
 import { DescripcionProductoComponent } from './productos/descripcion-producto/descripcion-producto.component';
 import { ResumenCompraComponent } from './productos/resumen-compra/resumen-compra.component';
 import { PagarComponent } from './productos/pagar/pagar.component';
+import { EditarProductoComponent } from './productos/editar-producto/editar-producto.component';
+import { RegistrarseComponent } from './clientes/registrarse/registrarse.component';
+import { AutorizadoComponent } from './seguridad/autorizado/autorizado.component';
+import { IndiceUsuariosComponent } from './usuarios/indice-usuarios/indice-usuarios.component';
+import { FormularioUsuarioComponent } from './usuarios/formulario-usuario/formulario-usuario.component';
+import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.component';
+import { EditarUsuarioComponent } from './usuarios/editar-usuario/editar-usuario.component';
+import { PagoExitosoComponent } from './clientes/pago-exitoso/pago-exitoso.component';
+import { ComprobanteComponent } from './clientes/comprobante/comprobante.component';
+import { IndiceComprasComponent } from './clientes/indice-compras/indice-compras.component';
+import { IndiceVentasComponent } from './productos/indice-ventas/indice-ventas.component';
+import { IndiceClientesComponent } from './usuarios/indice-clientes/indice-clientes.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +81,18 @@ import { PagarComponent } from './productos/pagar/pagar.component';
     DescripcionProductoComponent,
     ResumenCompraComponent,
     PagarComponent,
+    EditarProductoComponent,
+    RegistrarseComponent,
+    AutorizadoComponent,
+    IndiceUsuariosComponent,
+    FormularioUsuarioComponent,
+    CrearUsuarioComponent,
+    EditarUsuarioComponent,
+    PagoExitosoComponent,
+    ComprobanteComponent,
+    IndiceComprasComponent,
+    IndiceVentasComponent,
+    IndiceClientesComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,12 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { PageEvent } from '@angular/material/paginator';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { parsearErroresAPI } from '../helpers/helpers';
+import { productoCardDTO } from '../productos/producto';
+import { ProductosService } from '../productos/productos.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -17,44 +22,19 @@ export class LandingPageComponent implements OnInit {
   ];
   filteredOptions: Observable<string[]>;
 
-  productList = [
-    {
-      id: 1,
-      name: 'Paleta de Sombras de ojos',
-      image: './assets/images/sombras.jpg',
-      price: 120,
-      sales: 30,
-    },
-    {
-      id: 5,
-      name: 'Labial Liquido Morado',
-      image: './assets/images/labial_liquido.jpg',
-      price: 250,
-      sales: 10,
-    },
-    {
-      id: 5,
-      name: 'Labial Dorado',
-      image: './assets/images/labial_dorado.jpg',
-      price: 45.99,
-      sales: 12,
-    },
-    {
-      id: 5,
-      name: 'Labial Liquido Rosa',
-      image: './assets/images/labial_rosa.jpg',
-      price: 130,
-      sales: 1,
-    },
-    {
-      id: 5,
-      name: 'Polvo',
-      image: './assets/images/polvo.jpg',
-      price: 200,
-      sales: 12,
-    },
-  ];
-  constructor() {}
+  productos: productoCardDTO[];
+  //Paginación
+  cantidadTotalRegistros;
+  paginaActual = 1;
+  cantidadRegistrosAMostrar = 20;
+  isLoading = false;
+  errores: string[] = [];
+
+  form: FormGroup;
+
+  formularioOriginal = {
+    nombre: '',
+  };
 
   imagesForSlider = [
     {
@@ -67,12 +47,21 @@ export class LandingPageComponent implements OnInit {
       path: './assets/images/maquillaje.png',
     },
   ];
+  constructor(
+    private productosService: ProductosService,
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit(): void {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => this._filter(value))
+    this.cargarRegistrosPaginacion(
+      this.paginaActual,
+      this.cantidadRegistrosAMostrar
     );
+    this.form = this.formBuilder.group(this.formularioOriginal);
+
+    this.form.valueChanges.subscribe((valores) => {
+      this.buscarProductos(valores);
+    });
   }
 
   private _filter(value: string): string[] {
@@ -81,5 +70,50 @@ export class LandingPageComponent implements OnInit {
     return this.options.filter((option) =>
       option.toLowerCase().includes(filterValue)
     );
+  }
+
+  cargarRegistrosPaginacion(pagina: number, cantidadElementosAMostrar) {
+    this.isLoading = true;
+    this.productosService
+      .cardsPaginacion(pagina, cantidadElementosAMostrar)
+      .subscribe(
+        (respuesta: HttpResponse<productoCardDTO[]>) => {
+          this.productos = respuesta.body;
+
+          this.cantidadTotalRegistros = respuesta.headers.get(
+            'cantidadTotalRegistros'
+          );
+
+          this.isLoading = false;
+        },
+        (error) => {
+          this.errores = parsearErroresAPI(error);
+          this.isLoading = false;
+        }
+      );
+  }
+
+  actualizarPaginacion(datos: PageEvent) {
+    this.paginaActual = datos.pageIndex + 1;
+    this.cantidadRegistrosAMostrar = datos.pageSize;
+
+    this.cargarRegistrosPaginacion(
+      this.paginaActual,
+      this.cantidadRegistrosAMostrar
+    );
+  }
+
+  buscarProductos(valores: any) {
+    this.isLoading = true;
+    valores.pagina = this.paginaActual;
+    valores.recordsPorPagina = this.cantidadRegistrosAMostrar;
+
+    this.productosService.filtrarCards(valores).subscribe((response) => {
+      this.productos = response.body;
+      this.cantidadTotalRegistros = response.headers.get(
+        'cantidadTotalRegistros'
+      );
+      this.isLoading = false;
+    });
   }
 }

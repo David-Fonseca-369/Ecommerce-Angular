@@ -1,0 +1,8 @@
+.tabla-usuarios,
+mat-paginator {
+  width: 60%;
+}
+
+.tabla-usuarios {
+  margin-top: 3rem;
+}

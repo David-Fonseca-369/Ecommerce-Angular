@@ -1,0 +1,94 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
+
+<mat-dialog-content>
+  <app-mostrar-errores [errores]="errores"></app-mostrar-errores>
+  <div class="comprobante" id="htmlData">
+    <div style="display: flex; justify-content: end">
+      <img
+        style="width: 4rem; margin-right: 2rem"
+        src="./assets/images/Logo.png"
+        alt="Logo"
+      />
+    </div>
+
+    <h1 class="title">Pago Recibido</h1>
+    <p style="text-align: center; margin-top: 1rem">Transacción No.</p>
+    <p style="text-align: center">
+      <strong>{{ venta.idTransaccion }}</strong>
+    </p>
+
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 2rem 0;
+      "
+    >
+      <p style="font-size: x-large"><strong>Isamar Cosmetic´s</strong></p>
+      <p>Av. Mario Colin No.8 Col.Centro</p>
+      <p>Atlacomulco, Méx. Tel: 712 112 3493</p>
+    </div>
+    <div style="display: flex; justify-content: center">
+      <hr style="width: 70%" />
+    </div>
+
+    <div style="display: flex; justify-content: space-around; margin: 2rem 0">
+      <div>
+        <p><strong>Nombre del Cliente: </strong></p>
+        <p>{{ venta.nombreUsuario }}</p>
+      </div>
+      <div>
+        <p><strong>Fecha:</strong></p>
+        <p>{{ venta.fecha | date: "dd/MM/yyyy" }}</p>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: center">
+      <hr style="width: 70%" />
+    </div>
+
+    <h3 class="title" style="margin: 1rem 0">Detalles de compra</h3>
+    <div>
+      <div class="tabla-compra">
+        <table border="1">
+          <tr>
+            <th align="center">Nombre del Producto</th>
+            <th align="center">Precio</th>
+            <th align="center">Cantidad</th>
+            <th align="center">Subtotal</th>
+          </tr>
+
+          <tr *ngFor="let producto of venta.detalles">
+            <td align="start">{{ producto.nombreProducto }}</td>
+            <td align="center">{{ producto.precio | currency }}</td>
+            <td align="center">{{ producto.cantidad }}</td>
+            <td align="center">
+              {{ (producto.precio * producto.cantidad).toFixed(2) | currency }}
+            </td>
+          </tr>
+          <td colspan="4" align="end">
+            Total:
+            <strong>{{
+              (venta.detalles[0].precio * venta.detalles[0].cantidad).toFixed(2)
+                | currency
+            }}</strong>
+          </td>
+        </table>
+      </div>
+    </div>
+    <h1 class="title">¡Gracias por su compra!</h1>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close color="warn">Cerrar</button>
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+    (click)="downloadPDF()"
+  >
+    Descargar
+  </button>
+</mat-dialog-actions>

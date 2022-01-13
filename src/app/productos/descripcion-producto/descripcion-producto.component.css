@@ -63,3 +63,24 @@ p {
 .img-preview:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
+
+.wrapper-indicator {
+  position: relative;
+  height: 1.5rem;
+  width: 1.5rem;
+  overflow: none;
+}
+.wrapper-indicator .up,
+.wrapper-indicator .down {
+  position: absolute;
+  right: 0;
+  font-size: 0.5em;
+  height: 1.25rem !important;
+  width: 1.25rem !important;
+}
+.wrapper-indicator .up {
+  top: -0.25rem;
+}
+.wrapper-indicator .down {
+  top: 1rem;
+}

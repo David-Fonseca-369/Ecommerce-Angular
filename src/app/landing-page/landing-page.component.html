@@ -1,27 +1,27 @@
 <div>
   <div class="search">
     <div>
-      <mat-form-field appearance="outline">
-        <mat-label>Buscar</mat-label>
-        <input
-          type="text"
-          placeholder="Buscar..."
-          aria-label="Number"
-          matInput
-          [formControl]="myControl"
-          [matAutocomplete]="auto"
-        />
-        <mat-icon matSuffix>search</mat-icon>
+      <form [formGroup]="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Buscar</mat-label>
+          <input
+            type="text"
+            placeholder="Buscar..."
+            formControlName="nombre"
+            matInput
+          />
+          <mat-icon matSuffix>search</mat-icon>
 
-        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-          <mat-option
-            *ngFor="let option of filteredOptions | async"
-            [value]="option"
-          >
-            {{ option }}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option
+              *ngFor="let option of filteredOptions | async"
+              [value]="option"
+            >
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
     </div>
   </div>
 
@@ -39,7 +39,53 @@
     </carousel>
   </div>
   <div class="products">
-    <p>Mis Productos</p>
-    <app-listado-productos></app-listado-productos>
+    <p style="font-size: xx-large; text-align: center">Mis Productos</p>
+
+    <div *ngIf="productos">
+      <p style="color: red; text-align: center" *ngIf="productos.length <= 0">
+        No se encontraron resultados.
+      </p>
+    </div>
+
+    <!-- <app-listado-productos></app-listado-productos> -->
+    <div class="contenedor">
+      <div class="row">
+        <div class="column" *ngFor="let producto of productos">
+          <a routerLink="/productos/descripcion//{{ producto.idProducto }}">
+            <div class="card">
+              <div class="portada">
+                <img [src]="producto.portada" alt="Imagen Producto" />
+              </div>
+
+              <hr />
+              <p
+                style="
+                  text-align: start;
+                  margin: 1rem 0;
+                  font-size: large;
+                  color: black;
+                "
+              >
+                {{ producto.nombre }}
+              </p>
+              <div style="display: flex; justify-content: space-between">
+                <p style="color: red">{{ producto.precioVenta | currency }}</p>
+                <p style="color: gray">{{ producto.vendidos }} vendidos</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="paginator">
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 15, 20, 50]"
+          showFirstLastButtons
+          [length]="cantidadTotalRegistros"
+          [pageSize]="cantidadRegistrosAMostrar"
+          (page)="actualizarPaginacion($event)"
+        >
+        </mat-paginator>
+      </div>
+    </div>
   </div>
 </div>

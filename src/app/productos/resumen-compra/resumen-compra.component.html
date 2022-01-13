@@ -18,19 +18,19 @@
     <div class="resumen">
       <p style="margin: 1rem 0"><strong>Resumen de Compra</strong></p>
       <div style="display: flex; justify-content: space-between">
-        <p>Productos:</p>
-        <p>1</p>
+        <p>Cantidad:</p>
+        <p>{{ cantidad }}</p>
       </div>
       <div
         style="display: flex; justify-content: space-between; margin: 1rem 0"
       >
         <p>Precio:</p>
-        <p>$220.00</p>
+        <p>{{ precio | currency }}</p>
       </div>
       <hr />
       <div style="display: flex; justify-content: space-between">
         <p>Total:</p>
-        <p>$220.00</p>
+        <p>{{ precio * cantidad | currency }}</p>
       </div>
 
       <button

@@ -1,0 +1,59 @@
+<form [formGroup]="form">
+  <div class="formulario">
+    <div class="inputs">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre*</mat-label>
+        <input
+          formControlName="nombre"
+          placeholder="Ingrese un Nombre"
+          matInput
+        />
+        <mat-icon matSuffix>face</mat-icon>
+        <mat-error>Debe agregar un nombre.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Rol*</mat-label>
+        <mat-select formControlName="idRol">
+          <mat-option *ngFor="let rol of roles" [value]="rol.id">
+            {{ rol.nombre }}
+          </mat-option>
+        </mat-select>
+        <mat-error>Debe seleccionar un rol.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="inputs">
+      <mat-form-field appearance="outline">
+        <mat-label>Correo*</mat-label>
+        <input
+          formControlName="correo"
+          placeholder="Ingrese un correo"
+          matInput
+        />
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error>Debe agregar un Correo valido.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Contraseña*</mat-label>
+        <input
+          formControlName="password"
+          placeholder="Ingrese un password"
+          matInput
+          type="password"
+        />
+        <mat-icon matSuffix>lock</mat-icon>
+        <mat-error>La contraseña debe contener mínimo 8 caracteres.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button mat-flat-button [disabled]="form.invalid" (click)="guardar()">
+        Guardar
+      </button>
+
+      <a mat-stroked-button routerLink="/usuarios">Cancelar</a>
+    </div>
+  </div>
+</form>

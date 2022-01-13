@@ -18,6 +18,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material/tabs';
 
+import { MatDialogModule } from '@angular/material/dialog';
+
 //Para tabla son 2
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -40,6 +42,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatProgressSpinnerModule,
     MatTooltipModule,
     MatTabsModule,
+    MatDialogModule,
   ],
   imports: [CommonModule],
 })
